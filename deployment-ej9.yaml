@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ej9-bot
+  namespace: bot
+  labels:
+    app: ej9-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ej9-bot
+  template:
+    metadata:
+      labels:
+        app: ej9-bot
+    spec:
+      containers:
+      - name: ej9-bot
+        image: nicopaez/telegrambot:0.0.7
+        env:
+        - name: TELEGRAM_TOKEN
+          value: "A_COMPLETAR"
+        ports:
+        - containerPort: 8000
